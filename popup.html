@@ -1,0 +1,65 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Centsible</title>
+    <style>
+        body {
+            font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+            font-size: 100%;
+            width: 100%;
+            margin: 0;
+        }
+        #status {
+            /* avoid an excessively wide status text */
+            /*white-space: pre;
+            text-overflow: ellipsis;*/
+            overflow: hidden;
+            max-width: 400px;
+            padding: 5px;
+        }
+        .popup-buttons {
+            width: 100%;
+            min-width: 150px;
+            height: 25px;
+            font-size: 12px;
+            margin: 0;
+            outline: none;
+            border: none;
+            text-align: left;
+            padding-left: 10px;
+            background-color: transparent;
+            font-family: inherit;
+            transition: all .2s ease;
+        }
+        .popup-buttons:hover {
+            background-color: #E1F5FE;
+        }
+        #toggle-form {
+            font-family: inherit;
+            font-size: 12px;
+        }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+  </head>
+  <body>
+    <div id="status">
+        <button class="popup-buttons" id="settings">Settings</button>
+        <form id="toggle-form">
+            <input id="toggle-box" type="checkbox" name="toggle">Temporarily Disable<br>
+        </form>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
+
