@@ -9,14 +9,23 @@ window.onload = function() {
     var toggle = document.getElementById("toggle-box");
     toggle.addEventListener('click', function() {
         disabled = toggle.checked;
+        chrome.storage.sync.set({'disabled' : disabled}, function() {
+            console.log(disabled);
+        });
         //document.getElementById("toggle-form").submit();
     });
 }
 
 
+function getAccountInfoFromId(id) {
+    
+}
 
-//(function() {
-   
+/*(function() {
+    console.log(document.title);
+    if(document.title.indexOf("Amazon.com Shopping Cart") != -1) {
+        
+    }
     // setInterval(function() { console.log(disabled) }, 100); 
     
-//})();
+})();*/
