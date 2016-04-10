@@ -8,14 +8,92 @@
     <meta content="William Zhang" name="author">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="icons/favicon.ico" rel="icon" type="image/ico">
-    <link href="css/main.css" rel="stylesheet" />
     <title>Centsible Settings</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
+        #wrapper {
+            padding: 15px;
+        }
+        #logo {
+            width: 75px;
+            height: 75px;
+            background-image: url('icon.svg');
+            float: left;    
+            display: inline-block;
+        }
+        #header-title {
+            width: calc(100% - 105px);
+            height: 60px;
+            float: left;
+            vertical-align: center;
+            margin: 0;
+            padding-top: 15px;
+            padding-left: 15px;
+            display: inline-block;
+        }
+        #toggle-box {
+            font-size: 16px;
+        }
+        #header {
+            width: 100%;
+            height: 75px;
+            display: block;
+            float: left;
+        }
+        #content {
+            width: 100%:
+            height: calc(100% - 105px);
+            margin-top: 105px;
+            padding-top: 15px;
+        }
+        #toggle-form {
+            font-size: 16px;
+            padding-top: 5px;
+        }
+        #submit {
+            font-family: Roboto, Helvetica Neue, Helvetica, sans-serif;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    border: none;
+    outline: none;
+    width: 100px;
+    height: 25px;
+    margin-top: 15px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #eee;
+    font-size: 16px;
+        }
+        #submit:hover {
+            background-color: #e0e0e0;
+        }
+        #submit:active {
+            background-color: #bdbdbd
+        }
+        </style>
 </head>
 
 <body>
     <div id="wrapper">
         <div id="header">
-            <h1>Centsible Settings</h1>
+            <div id="logo"></div>
+            <h1 id="header-title">Centsible Settings</h1>
+        </div>
+        <div id="content">
+            <div id="money"></div>
+            <form id="toggle-form">
+                <input id="toggle-box" type="checkbox" name="toggle">Temporarily Disable<br>
+                Capital One API ID <input id="capitalone-id" type="text" name="capitalone-id">
+                <button id="submit">Save</button>
+            </form>
         </div>
         <!--<form id="custInfo">
             First Name: <input type="text" name="fname" required><br/>
@@ -29,6 +107,6 @@
                
     </div>
 </body>
-
+<script src="settings.js"></script>
 </html>
 
