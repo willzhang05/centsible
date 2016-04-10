@@ -30,5 +30,4 @@ function modifyButton(isDisabled) {
         } else {    
             checkoutButtons[0].removeAttribute("disabled");
         }
-    }
-
+}
