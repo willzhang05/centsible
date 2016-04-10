@@ -12,7 +12,8 @@
     "background": {
         "scripts": ["jquery.min.js", "background.js"]
     },
-  "content_scripts": [
+  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio-demo.com; object-src 'self'",
+    "content_scripts": [
         {
             "matches": ["https://www.amazon.com/gp/cart/view.html*"],
             "js": ["jquery.min.js", "amazon.js"],

@@ -1,5 +1,18 @@
 var disabled = false;
 window.onload = function() {
+    var amount = document.getElementById("money");  
+    chrome.storage.sync.get("balance", function (balance) {
+        if(balance.balance < 0) {
+            amount.style.color = "red";
+        } else {
+            amount.innerHTML = balance.balance;
+            if(amount.innerHTML.length == 1) {
+                amount.innerHTML = balance.balance + "00";
+            }
+            amount.innerHTML = "$" + (amount.innerHTML).substring(0, (amount.innerHTML).length - 2) + "." + (amount.innerHTML).substring((amount.innerHTML).length - 2)
+            amount.style.color = "green";
+        }
+    });
     var settings = document.getElementById("settings");
     console.log(settings);
     settings.addEventListener("click", function() {
@@ -17,32 +30,12 @@ window.onload = function() {
         setToggleValue(toggle.checked);
     });
     toggle.addEventListener("click", function() {
-       //*if(isToggled)V {
-         /*   toggle.checked = "checked";
-        }
-`       
-    disabled = toggle.checked;*/
-        //chrome.storage.sync.set({"disabled" : toggle.checked}, function() {
-            /*chrome.storage.sync.get("disabled", function (bool) {
-                console.log(bool);
-            });*/
-            setToggleValue(toggle.checked);
-        //});
-        //document.getElementById("toggle-form").submit();
+        setToggleValue(toggle.checked);
     });
 }
 
 function setToggleValue(bool) {
-        chrome.storage.sync.set({"disabled" : bool}, function() {
-            console.log("Saved toggle state " + bool + " to Chrome Storage");
-        });
+    chrome.storage.sync.set({"disabled" : bool}, function() {
+        console.log("Saved toggle state " + bool + " to Chrome Storage");
+     });
 }
-
-/*(function() {
-    console.log(document.title);
-    if(document.title.indexOf("Amazon.com Shopping Cart") != -1) {
-        
-    }
-    // setInterval(function() { console.log(disabled) }, 100); 
-    
-})();*/

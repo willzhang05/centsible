@@ -23,6 +23,8 @@ function checkPrice(balance) {
 
 function modifyButton(isDisabled) {  
         var checkoutButtons = document.getElementsByName("proceedToCheckout");
+        var modal = document.createElement("div");
+        checkoutButtons[0].parentNode.appendChild(modal);
         if(!isDisabled) {
             checkoutButtons[0].setAttribute("disabled", true);
         } else {    
