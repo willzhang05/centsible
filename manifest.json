@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Centsible",
-  "description": "This extension shows a Google Image search result for the current page",
+  "description": "This extension tracks a budget; if the budget is gone over, the user is no longer able to purchase online. The user has an option to temporarily disable the extension, however, their budget will become negative.",
   "version": "1.0",
 
   "browser_action": {
@@ -14,8 +14,9 @@
     },
   "content_scripts": [
         {
-            "matches": ["https://www.amazon.com/gp/cart/view.html/*"],
-            "js": ["amazon.js"]
+            "matches": ["https://www.amazon.com/gp/cart/view.html*"],
+            "js": ["jquery.min.js", "amazon.js"],
+            "run_at": "document_end"
         }
     ],
   "permissions": [
