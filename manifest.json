@@ -18,6 +18,16 @@
             "matches": ["https://www.amazon.com/gp/cart/view.html*"],
             "js": ["jquery.min.js", "amazon.js"],
             "run_at": "document_end"
+        },
+        {
+            "matches": ["https://secure.newegg.com/Shopping/Shopping*"],
+            "js": ["jquery.min.js", "newegg.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["*://cart.payments.ebay.com/sc/view*"],
+            "js": ["jquery.min.js", "ebay.js"],
+            "run_at": "document_end"
         }
     ],
   "permissions": [

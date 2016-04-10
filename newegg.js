@@ -7,26 +7,32 @@ $.get("https://sysadmin.wzhang.me/" + id + "/accounts?key=7183aadcbc7ff9d602fb63
 });
 
 function checkPrice(balance) {
-    var price = document.getElementsByClassName("a-size-medium a-color-price sc-price sc-white-space-nowrap  sc-price-sign")[0].innerHTML;
+    var price = document.getElementsByClassName("amount")[2].innerHTML;
+    price = price.trim();
     price = parseInt(price.substring(1, price.length).replace(".", ""));
+    
+    console.log(balance - price);
     if(balance - price < 0) {
         chrome.storage.sync.get("disabled", function (bool) {
             if(chrome.runtime.lastError) {
-                isDisabled = false;
+                var isDisabled = false;
                 return;
             }
-            isDisabled = bool.disabled;
+            var isDisabled = bool.disabled;
             modifyButton(isDisabled);
         });
      }
 }
 
 function modifyButton(isDisabled) {  
-        var checkoutButtons = document.getElementsByName("proceedToCheckout");
+        var checkoutButtons = document.getElementsByClassName("button button-primary has-icon-right");
+        console.log(checkoutButtons[0]);
+        console.log(isDisabled);
         var modal = document.createElement("div");
         checkoutButtons[0].parentNode.appendChild(modal);
         if(!isDisabled) {
             checkoutButtons[0].setAttribute("disabled", true);
+            checkoutButtons[0].removeAttribute("href");
             alert("Insufficient Funds");
         } else {    
             checkoutButtons[0].removeAttribute("disabled");

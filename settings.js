@@ -27,6 +27,10 @@ window.onload = function() {
         setToggleValue(toggle.checked);
     });
     var idBox = document.getElementById("capitalone-id");
+    idBox.style.width = "200px";
+    chrome.storage.sync.get("id", function(value) {
+    idBox.value = value.id;
+    }); 
     document.getElementById("submit").addEventListener("click", function() {
         chrome.storage.sync.set({"id" : idBox.value}, function() {
             console.log("Saved value " + idBox.value + " to Chrome Storage");
